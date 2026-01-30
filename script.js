@@ -1,12 +1,12 @@
 const gridData = [
-    ["S","T","O","P","L","O","S","S","Q","W","S"],
+    ["S","T","O","P","L","O","S","S","Q","R","S"],
     ["C","E","X","P","I","R","Y","B","R","A","C"],
     ["A","F","L","O","A","T","N","A","U","L","A"],
     ["L","D","E","L","T","A","L","L","F","L","L"],
     ["P","I","G","H","E","D","G","E","I","Y","P"],
     ["I","K","V","E","G","A","P","Y","I","U","I"],
     ["N","E","M","K","L","J","I","Z","X","V","N"],
-    ["G","D","L","I","Q","U","I","D","I","T","Y"],
+    ["G","L","I","Q","U","I","D","I","T","Y","G"],
     ["C","O","I","L","O","P","S","W","E","E","P"],
     ["T","R","A","D","I","N","G","H","K","L","M"],
     ["S","T","R","I","K","E","B","N","M","J","H"]
@@ -22,14 +22,24 @@ const gridData = [
   let foundWords = [];
   let score = 0;
   let time = 60;
+  let userData = {};
+
   
   function startGame() {
+    userData = {
+      name: document.getElementById("name").value,
+      phone: document.getElementById("phone").value,
+      email: document.getElementById("email").value,
+      city: document.getElementById("city").value
+    };
+  
     document.getElementById("formPage").style.display = "none";
     document.getElementById("gamePage").style.display = "block";
     createGrid();
     loadWords();
     startTimer();
   }
+  
   
   function createGrid() {
     const grid = document.getElementById("grid");
@@ -134,10 +144,26 @@ const gridData = [
     const interval = setInterval(() => {
       time--;
       document.getElementById("timer").innerText = "Time: " + time;
+  
       if (time === 0) {
         clearInterval(interval);
-        alert("Time up! Score: " + score);
+        submitData();
+        alert("Time up! Your score: " + score);
       }
     }, 1000);
   }
+
+  function submitData() {
+    fetch("https://script.google.com/macros/s/AKfycbwO4cyIJLFSVz50mn2Los8JBUyVk52qUC2KgvNKqNOd9Zc485IIbQY5Ggayz9QTUUu5/exec", {
+      method: "POST",
+      body: JSON.stringify({
+        name: userData.name,
+        phone: userData.phone,
+        email: userData.email,
+        city: userData.city,
+        score: score
+      })
+    });
+  }
+    
   
