@@ -23,7 +23,10 @@ gridElement.addEventListener("touchmove", e => {
 }, { passive: false });
 
   
-
+  const words = [
+    "EXPIRY","STOPLOSS","DELTA","SCALPING","LIQUIDITY",
+    "VEGA","RALLY","SWEEP","FLOAT","STRIKE","COIL"
+  ]
   
   let isDragging = false;
   let selectedCells = [];
