@@ -170,4 +170,10 @@ body {
       font-size: 14px;
     }
   }
+body.game-active {
+  overflow: hidden;
+  touch-action: none;
+}
+
   
+
