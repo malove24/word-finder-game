@@ -35,6 +35,7 @@ const gridData = [
   
     document.getElementById("formPage").style.display = "none";
     document.getElementById("gamePage").style.display = "block";
+    document.body.classList.add("game-active");
     createGrid();
     loadWords();
     startTimer();
@@ -165,5 +166,6 @@ const gridData = [
       })
     });
   }
-    
+        
   
+
