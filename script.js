@@ -11,6 +11,17 @@ const gridData = [
     ["T","R","A","D","I","N","G","H","K","L","M"],
     ["S","T","R","I","K","E","B","N","M","J","H"]
   ];
+
+const gridElement = document.getElementById("grid");
+
+gridElement.addEventListener("touchstart", e => {
+  e.preventDefault();
+}, { passive: false });
+
+gridElement.addEventListener("touchmove", e => {
+  e.preventDefault();
+}, { passive: false });
+
   
   const words = [
     "EXPIRY","STOPLOSS","DELTA","SCALPING","LIQUIDITY",
@@ -168,4 +179,5 @@ const gridData = [
   }
         
   
+
 
